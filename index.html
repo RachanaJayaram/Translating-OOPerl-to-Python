@@ -5,5 +5,73 @@ layout: default
     <h1>
         Translating Object Oriented Perl to Python
     </h1>
-    He
+    <div>
+    <img 
+        src = "inp_op.png" ;
+        display: block;
+        margin: 0 auto;
+    >  
+</div>
+    <br>
+    This project involves exploring translation of code between languages. 
+    Given a syntactically correct code written in Object Oriented Perl the tool developed here outputs an equivalent code in Python. 
+    The Python code generated is logically identical to the input Perl code and given any input both codes produce identical outputs.
+    <h3>
+        How it works
+    </h3>
+    <img src = "Systemarchitecture.png" height = "300px">
+
+    The translation consists of 3 main stages :
+    <h4>
+        1. Lexing
+    </h4>
+        The input code is first broken into tokens using a lexer using regex rules for tokenization during the lexing stage.
+        <br>
+        <img 
+            src = "lexer.PNG"  
+            style = 
+                "display: block;
+                margin: 0 auto;"
+            height = "200px"
+            >
+        <img 
+            src = "lexer_op.PNG"  
+            style = 
+                "display: block;
+                margin: 0 auto;"
+            width = "80%"
+            >
+    <h4>
+        2. Parsing
+    </h4>
+        The sequence of tokens is passed is matched to Perl grammar in the parsing stage. The parser built works in two stages.
+        <ol>
+            <li>
+                In the first stage of parsing the tokens are matched to Perl Grammar to aggregate all the tokens that act as identifiers.
+                This is used to construct a symbol table. 
+                The symbol table consists of information about all the functions in the code, the functions called within each function, the variables used in the function and the scope in which they were used. The importance of variable scope in perl is explained later. 
+
+            </li>
+            <li>
+                In this stage the parser utilizes the symbol table generated previously along with production rules and mapping functions to map the tokens of each Perl statement to its equivalent Python statement.
+                The generated python statement is subsequently added to an Abstract Syntax Tree (AST). 
+            </li>
+        </ol>
+        <img 
+        src = "constructor.PNG"  
+        style = 
+            "display: block;
+            margin: 0 auto;"
+        width = "80%"
+        >
+    <h4>
+        3. Abstract Syntax Tree Traversal and Indentation
+    </h4>
+    In the final step the generated Abstract Syntax tree is traversed using depth first traversal 
+    Proper indentation is crucial for python; indentations are set to match the depth of the node containing the statement in the Abstract Syntax Tree.
+
+
+
+
+    
 </body>
