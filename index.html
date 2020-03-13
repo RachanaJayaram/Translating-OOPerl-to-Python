@@ -1,77 +1,710 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        html,
+        body {
+
+            font-family: "Open Sans", Helvetica, Arial, sans-serif;
+            font-size: 15px;
+        }
+
+        #instructions {
+            margin-top: 3%;
+            font-size: 13px;
+            color: #fff;
+            text-align: center;
+
+        }
+
+        #full_window {
+            height: 100%;
+            align-content: center;
+            position: absolute;
+            width: 100%;
+        }
+
+        #side_bar {
+            background-color: rgb(60, 188, 243);
+            color: #fff;
+            padding-top: 20px;
+            padding-left: 0.75%;
+            font-family: Arial, sans-serif;
+            font-weight: 100;
+            text-align: center;
+
+        }
+
+
+        #main {
+            background-color: rgb(233, 234, 235);
+            color: #fff;
+            padding-top: 20px;
+            font-family: Arial, sans-serif;
+            font-weight: 100;
+
+        }
+
+        #deets {
+            left: 3px !important;
+            background-color: rgb(88, 198, 245);
+            font-size: 2px !important;
+            overflow: auto;
+
+        }
+
+        #dashboard {
+            padding: 30px;
+            font-size: 20px;
+            font-family: "Open Sans", Helvetica, Arial, sans-serif;
+            background-color: #fff;
+            color: #0091cd;
+            font-weight: lighter;
+        }
+
+        tr td {
+            padding: 3px !important;
+            margin: 0 !important;
+        }
+
+        .card {
+
+            margin-top: auto;
+            margin-bottom: auto;
+            background-color: rgba(3, 8, 75, 0.719);
+            justify-content: center;
+            padding: 15px;
+        }
+
+
+        .card-header h2 {
+            margin-top: 3.5%;
+            text-align: center;
+            color: white;
+            margin-bottom: 0%;
+            padding-bottom: 0%;
+        }
+
+        .card-body {
+            margin-top: 0%;
+            padding-top: 0%;
+            top: 0%;
+            color: white;
+        }
+
+        .social_icon {
+            position: absolute;
+            right: 20px;
+            top: -45px;
+        }
+
+        .input-group-prepend span {
+            width: 50px;
+            background-color: rgb(4, 10, 100);
+            color: white;
+        }
+
+        input:focus {
+            outline: 0 0 0 0 !important;
+            box-shadow: 0 0 0 0 !important;
+
+        }
+
+        #seperator {
+            color: rgb(255, 255, 255);
+            border: 1px solid rgb(255, 255, 255);
+        }
+
+
+        .translate_btn {
+            color: white;
+            background-color: rgb(11, 105, 192);
+            width: 33%;
+        }
+
+        .translate_btn:hover {
+            color: black;
+            background-color: white;
+        }
+
+        .links {
+            color: white;
+        }
+
+        .links a {
+            margin-left: 4px;
+        }
+
+        #translate_btn {
+            width: fit-content
+        }
+
+        .form-group {
+            text-align: center;
+            align-content: center;
+        }
+
+        .col-sm-6 {
+            padding: 10px;
+            color: #2b2c2c;
+            box-shadow: 0px 1px 1px 1px #ccc;
+        }
+
+        /* Pretty printing styles. Used with prettify.js. */
+        /* Vim sunburst theme by David Leibovic */
+
+        pre .str,
+        code .str {
+            color: #65B042;
+        }
+
+        /* string  - green */
+        pre .kwd,
+        code .kwd {
+            color: #E28964;
+        }
+
+        /* keyword - dark pink */
+        pre .com,
+        code .com {
+            color: #AEAEAE;
+            font-style: italic;
+        }
+
+        /* comment - gray */
+        pre .typ,
+        code .typ {
+            color: #89bdff;
+        }
+
+        /* type - light blue */
+        pre .lit,
+        code .lit {
+            color: #3387CC;
+        }
+
+        /* literal - blue */
+        pre .pun,
+        code .pun {
+            color: #fff;
+        }
+
+        /* punctuation - white */
+        pre .pln,
+        code .pln {
+            color: #fff;
+        }
+
+        /* plaintext - white */
+        pre .tag,
+        code .tag {
+            color: #89bdff;
+        }
+
+        /* html/xml tag    - light blue */
+        pre .atn,
+        code .atn {
+            color: #bdb76b;
+        }
+
+        /* html/xml attribute name  - khaki */
+        pre .atv,
+        code .atv {
+            color: #65B042;
+        }
+
+        /* html/xml attribute value - green */
+        pre .dec,
+        code .dec {
+            color: #3387CC;
+        }
+
+        /* decimal - blue */
+
+        pre.prettyprint,
+        code.prettyprint {
+            background-color: #000;
+            border-radius: 8px;
+        }
+
+        pre.prettyprint {
+            width: 95%;
+            margin: 1em auto;
+            padding: 1em;
+            white-space: pre-wrap;
+        }
+
+
+        /* Specify class=linenums on a pre to get line numbering */
+        ol.linenums {
+            margin-top: 0;
+            margin-bottom: 0;
+            color: #AEAEAE;
+            background-color: #000;
+        }
+
+        /* IE indents via margin-left */
+        li.L0,
+        li.L1,
+        li.L2,
+        li.L3,
+        li.L5,
+        li.L6,
+        li.L7,
+        li.L8 {
+            list-style-type: none;
+            background-color: #000;
+            background: black;
+        }
+
+        /* Alternate shading for lines */
+        li.L1,
+        li.L3,
+        li.L5,
+        li.L7,
+        li.L9 {
+            background-color: #000 !important;
+            background: black;
+        }
+
+        @media print {
+
+            pre .str,
+            code .str {
+                color: #060;
+            }
+
+            pre .kwd,
+            code .kwd {
+                color: #006;
+                font-weight: bold;
+            }
+
+            pre .com,
+            code .com {
+                color: #600;
+                font-style: italic;
+            }
+
+            pre .typ,
+            code .typ {
+                color: #404;
+                font-weight: bold;
+            }
+
+            pre .lit,
+            code .lit {
+                color: #044;
+            }
+
+            pre .pun,
+            code .pun {
+                color: #440;
+            }
+
+            pre .pln,
+            code .pln {
+                color: #000;
+            }
+
+            pre .tag,
+            code .tag {
+                color: #006;
+                font-weight: bold;
+            }
+
+            pre .atn,
+            code .atn {
+                color: #404;
+            }
+
+            pre .atv,
+            code .atv {
+                color: #060;
+            }
+        }
+
+        li.L0,
+        li.L1,
+        li.L2,
+        li.L3,
+        li.L5,
+        li.L6,
+        li.L7,
+        li.L8 {
+            list-style-type: decimal !important;
+            background-color: #000;
+        }
+
+        li.L9 {
+            background-color: #000;
+        }
+
+        .my_code {
+            float: left;
+            width: 100%;
+            overflow-x: scroll;
+            overflow-y: auto;
+            height: 500px;
+            padding: 10px;
+            background-color: #000000 !important;
+            word-wrap: nowrap !important;
+            word-break: keep-all !important;
+            white-space: nowrap !important;
+            background: black !important;
+        }
+
+        .my_code_o {
+            float: left;
+            width: 100%;
+            overflow: auto;
+            height: 300px;
+            padding: 10px;
+            background-color: #000000 !important;
+            background: black !important;
+        }
+
+        code {
+            background-color: #000000 !important;
+        }
+    </style>
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+    <meta name="generator" content="Jekyll v3.8.5" />
+    <meta property="og:locale" content="en_US" />
+    <link rel="canonical" href="http://localhost:4000/" />
+    <meta property="og:url" content="http://localhost:4000/" />
+    <script type="application/ld+json">
+{"@type":"WebSite","url":"http://localhost:4000/","@context":"https://schema.org"}</script>
+    <!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+</head>
+
 <body>
-    <h1>
-        Translating Object Oriented Perl to Python
-    </h1>
-    <div>
-    <img 
-        src = "inp_op.png" ;
-        display: block;
-        margin: 0 auto;
-    >  
-</div>
-    <br>
-    This project involves exploring translation of code between languages. 
-    Given a syntactically correct code written in Object Oriented Perl the tool developed here outputs an equivalent code in Python. 
-    The Python code generated is logically identical to the input Perl code and given any input both codes produce identical outputs.
-    <h3>
-        How it works
-    </h3>
-    <img src = "Systemarchitecture.png" height = "300px">
-
-    The translation consists of 3 main stages :
-    <h4>
-        1. Lexing
-    </h4>
-        The input code is first broken into tokens using a lexer using regex rules for tokenization during the lexing stage.
-        <br>
-        <img 
-            src = "lexer.PNG"  
-            style = 
-                "display: block;
-                margin: 0 auto;"
-            height = "200px"
-            >
-        <img 
-            src = "lexer_op.PNG"  
-            style = 
-                "display: block;
-                margin: 0 auto;"
-            width = "80%"
-            >
-    <h4>
-        2. Parsing
-    </h4>
-        The sequence of tokens is passed is matched to Perl grammar in the parsing stage. The parser built works in two stages.
-        <ol>
-            <li>
-                In the first stage of parsing the tokens are matched to Perl Grammar to aggregate all the tokens that act as identifiers.
-                This is used to construct a symbol table. 
-                The symbol table consists of information about all the functions in the code, the functions called within each function, the variables used in the function and the scope in which they were used. The importance of variable scope in perl is explained later. 
-
-            </li>
-            <li>
-                In this stage the parser utilizes the symbol table generated previously along with production rules and mapping functions to map the tokens of each Perl statement to its equivalent Python statement.
-                The generated python statement is subsequently added to an Abstract Syntax Tree (AST). 
-            </li>
-        </ol>
-        <img 
-        src = "constructor.PNG"  
-        style = 
-            "display: block;
-            margin: 0 auto;"
-        width = "80%"
-        >
-    <h4>
-        3. Abstract Syntax Tree Traversal and Indentation
-    </h4>
-    In the final step the generated Abstract Syntax tree is traversed using depth first traversal 
-    Proper indentation is crucial for python; indentations are set to match the depth of the node containing the statement in the Abstract Syntax Tree.
+    <section class="page-header">
+        <h1 class="project-name"></h1>
+        <h2 class="project-tagline"></h2>
 
 
+    </section>
+
+    <section class="main-content">
+
+        <body>
+            <h1>
+                Translating Object Oriented Perl to Python
+            </h1>
+            <div>
+
+            </div>
+            <br>
+            This project is an exploration of program translation using compiler design techniques.
+            Given a syntactically correct code written in Object Oriented Perl the tool developed here programatically
+            generates an equivalent code in Python.
+            The Python code generated is logically identical to the input Perl code and given any input, both codes
+            produce identical outputs.
+            The project is implemented in python with the help of the <a href="https://www.dabeaz.com/ply/">python lex
+                and yacc library</a> (PLY).
+            <img src="inp_op.png" ; display: block; margin: 0 auto;>
+            <h3>
+                Perl concepts covered
+            </h3>
+            To understand the difficulty in translation, we must first take into consideration the peculiarities of
+            perl. Namely, the concepts of
+            <a href="https://perldoc.perl.org/functions/bless.html">blessing </a>,
+            <a href="https://www.perl.com/pub/2004/06/18/variables.html/">special variables</a>,
+            <a href="https://www.perlmonks.org/?node_id=66677"> confusing aspects of scoping (local, global and my)</a>
+            proved to be challenging to translate as there is no one to one equivalent of aforementioned concepts in
+            python. However
+            with intelligent parsing, perfect translation of these concepts were achieved.
+
+            <br>
+            The following have been covered in the scope of this project.
+            <ol>
+                <li>
+                    Packages
+                </li>
+                <li>
+                    Arithmetic, relational and logical expressions
+                </li>
+                <li>
+                    Loops
+                </li>
+                <li>
+                    Hashes
+                </li>
+                <li>
+                    Subroutines
+                </li>
+                <li>
+                    Constructors, Blessing
+                </li>
+                <li>
+                    Scoping (local, global and my)
+                </li>
+                <li>
+                    Inheritance
+                </li>
+            </ol>
+            Perl code using / implementing these concepts could successfully be translated to equivalent python code.
+
+            <h1>
+                Results
+            </h1>
+
+            <h3>
+                Example 1
+            </h3>
+            Printing the fibonacci series - demonstrating loops.
+            <br>
+            <div class="container-fluid" id="" style="background-color: whitesmoke">
+                <div class="row">
+                    <div class="col-sm-12" id="perl">
+                        <hr>
+                        <h3 style="text-align: center">Input: Perl Code </h3>
+                        fibonacci.pl
+                        <hr>
+                        <div class="my_code" style="color:white">
+                            <code class="prettyprint language-perl linenums prettyprinted" id="perl_code"
+                                style=""><ol class="linenums"><li class="L0"><span class="kwd">print</span><span class="pln"> </span><span class="str">"12 terms of the fibonacci series\n"</span><span class="pun">;</span><span class="pln"> </span></li><li class="L1"><span class="pln">$a</span><span class="pun"> = </span><span class="lit">0</span><span class="pln"> </span><span class="pun">;</span><span class="pln"> </span></li><li class="L2"><span class="pln">$b</span><span class="pun"> = </span><span class="lit">1</span><span class="pln"> </span><span class="pun">;</span><span class="pln"> </span></li><li class="L3"><span class="kwd">print</span><span class="pln"> </span><span class="str">"$a $b "</span><span class="pun">;</span><span class="pln"> </span></li><li class="L4"><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> $i</span><span class="pun"> = </span><span class="lit">2</span><span class="pun">;</span><span class="pln"> $i </span><span class="pun"> &lt;= </span><span class="pln"> </span><span class="lit">12</span><span class="pun">;</span><span class="pln"> $i</span><span class="pun">++)</span><span class="pln"> </span></li><li class="L5"><span class="pun">{</span><span class="pln"> </span></li><li class="L6"><span class="pln">   $c </span><span class="pun">=</span><span class="pln"> $a </span><span class="pun">+</span><span class="pln"> $b</span><span class="pun">;</span><span class="pln"> </span></li><li class="L7"><span class="pln">   </span><span class="kwd">print</span><span class="pln"> </span><span class="str">"$c "</span><span class="pun">;</span><span class="pln"> </span></li><li class="L8"><span class="pln">   $a </span><span class="pun">=</span><span class="pln"> $b </span><span class="pun">;</span><span class="pln"> </span></li><li class="L9"><span class="pln">   $b </span><span class="pun">=</span><span class="pln"> $c </span><span class="pun">;</span><span class="pln"> </span></li><li class="L0"><span class="pun">}</span><span class="pln"> </span></li><li class="L1"><span class="kwd">print</span><span class="pln"> </span><span class="str">"\n"</span><span class="pun">;</span><span class="pln"> </span></li><li class="L2"><span class="pln"> </span></li></ol></code>
 
 
-    
+                        </div>
+                    </div>
+                    <div class="col-sm-12" id="python">
+                        <hr>
+                        <h3 style="text-align: center">Output: Python Code </h3>
+                        fibonacci.py
+                        <hr>
+                        <div class="my_code" style="color:white">
+                            <code class="prettyprint language-python linenums prettyprinted" id="python_code"
+                                style=""><ol class="linenums"><li class="L0"><span class="pln">str_ </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">lambda</span><span class="pln"> x</span><span class="pun">:</span><span class="pln"> </span><span class="str">''</span><span class="pln"> </span><span class="kwd">if</span><span class="pln"> x </span><span class="pun">==</span><span class="pln"> </span><span class="kwd">None</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> str</span><span class="pun">(</span><span class="pln">x</span><span class="pun">)</span><span class="pln"> </span></li><li class="L1"><span class="pln">a </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">None</span><span class="pln"> </span></li><li class="L2"><span class="pln">b </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">None</span><span class="pln"> </span></li><li class="L3"><span class="pln">c </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">None</span><span class="pln"> </span></li><li class="L4"><span class="kwd">print</span><span class="pun">(</span><span class="pln"> </span><span class="str">"12 terms of the fibonacci series\n"</span><span class="pun">,</span><span class="pln"> end</span><span class="pun">=</span><span class="str">''</span><span class="pun">,</span><span class="pln"> sep</span><span class="pun">=</span><span class="str">''</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span></li><li class="L5"><span class="pln">a </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span></li><li class="L6"><span class="pln">b </span><span class="pun">=</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span></li><li class="L7"><span class="kwd">print</span><span class="pun">(</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">a</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">b</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" "</span><span class="pun">,</span><span class="pln"> end</span><span class="pun">=</span><span class="str">''</span><span class="pun">,</span><span class="pln"> sep</span><span class="pun">=</span><span class="str">''</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span></li><li class="L8"><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range </span><span class="pun">(</span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="lit">13</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">):</span><span class="pln"> </span></li><li class="L9"><span class="pln">        c </span><span class="pun">=</span><span class="pln"> a </span><span class="pun">+</span><span class="pln"> b </span></li><li class="L0"><span class="pln">        </span><span class="kwd">print</span><span class="pun">(</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">c</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" "</span><span class="pun">,</span><span class="pln"> end</span><span class="pun">=</span><span class="str">''</span><span class="pun">,</span><span class="pln"> sep</span><span class="pun">=</span><span class="str">''</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span></li><li class="L1"><span class="pln">        a </span><span class="pun">=</span><span class="pln"> b </span></li><li class="L2"><span class="pln">        b </span><span class="pun">=</span><span class="pln"> c </span></li><li class="L3"><span class="kwd">print</span><span class="pun">(</span><span class="pln"> </span><span class="str">"\n"</span><span class="pun">,</span><span class="pln"> end</span><span class="pun">=</span><span class="str">''</span><span class="pun">,</span><span class="pln"> sep</span><span class="pun">=</span><span class="str">''</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span></li><li class="L4"><span class="pln"> </span></li></ol></code>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-6" id="perl">
+                        <h4 style="text-align: center">Perl Code Output</h4>
+                        <div class="my_code_o">
+                            <code id="perl_output"
+                                style="color: white !important;"><span class="lit">12</span><span class="pln"> terms </span><span class="kwd">of</span><span class="pln"> the fibonacci series</span><br><span class="lit">0</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="lit">3</span><span class="pln"> </span><span class="lit">5</span><span class="pln"> </span><span class="lit">8</span><span class="pln"> </span><span class="lit">13</span><span class="pln"> </span><span class="lit">21</span><span class="pln"> </span><span class="lit">34</span><span class="pln"> </span><span class="lit">55</span><span class="pln"> </span><span class="lit">89</span><span class="pln"> </span><span class="lit">144</span><span class="pln"> </span><br><span class="pln"> </span></code>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" id="python">
+                        <h4 style="text-align: center">Python Code Output</h4>
+                        <div class="my_code_o">
+                            <code id="python_output"
+                                style="color: white !important;"><span class="lit">12</span><span class="pln"> terms </span><span class="kwd">of</span><span class="pln"> the fibonacci series</span><br><span class="lit">0</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="lit">3</span><span class="pln"> </span><span class="lit">5</span><span class="pln"> </span><span class="lit">8</span><span class="pln"> </span><span class="lit">13</span><span class="pln"> </span><span class="lit">21</span><span class="pln"> </span><span class="lit">34</span><span class="pln"> </span><span class="lit">55</span><span class="pln"> </span><span class="lit">89</span><span class="pln"> </span><span class="lit">144</span><span class="pln"> </span><br><span class="pln"> </span></code>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <h3>
+                Example 2
+            </h3>
+            Getting the ara of a rectangle. Demonstrates translation packages, expressions, blessing and @INC.
+            <h2>Server</h2>
+            <div class="container-fluid" id="" style="background-color: whitesmoke">
+                <div class="row">
+                    <div class="col-sm-12" id="perl">
+                        <hr>
+                        <h3 style="text-align: center">Input: Perl Code </h3>
+                        server.pm
+                        <hr>
+                        <div class="my_code" style="color:white">
+                            <code class="prettyprint language-perl linenums prettyprinted" id="perl_code"
+                                style=""><ol class="linenums"><li class="L0"><span class="kwd">package</span><span class="pln"> rect</span><span class="pun">;</span><span class="pln"> </span></li><li class="L1"><span class="kwd">sub</span><span class="pln"> new </span></li><li class="L2"><span class="pun">{</span><span class="pln"> </span></li><li class="L3"><span class="pln">    </span><span class="kwd">my</span><span class="pln"> $class </span><span class="pun">=</span><span class="pln"> shift</span><span class="pun">;</span><span class="pln"> </span></li><li class="L4"><span class="pln">    </span><span class="kwd">my</span><span class="pln"> $self </span><span class="pun">=</span><span class="pln"> </span></li><li class="L5"><span class="pln">    </span><span class="pun">{</span><span class="pln"> </span></li><li class="L6"><span class="pln">        length </span><span class="pun">=&gt;</span><span class="pln"> shift</span><span class="pun">,</span><span class="pln"> </span></li><li class="L7"><span class="pln">        breadth </span><span class="pun">=&gt;</span><span class="pln"> shift </span></li><li class="L8"><span class="pln">    </span><span class="pun">};</span><span class="pln"> </span></li><li class="L9"><span class="pln">    bless</span><span class="pun">(</span><span class="pln">$self</span><span class="pun">,</span><span class="pln"> $class</span><span class="pun">);</span><span class="pln"> </span></li><li class="L0"><span class="pln">    return $self</span><span class="pun">;</span><span class="pln"> </span></li><li class="L1"><span class="pln"> </span></li><li class="L2"><span class="pun">}</span><span class="pln"> </span></li><li class="L3"><span class="pln"> </span></li><li class="L4"><span class="kwd">sub</span><span class="pln"> area </span></li><li class="L5"><span class="pun">{</span><span class="pln"> </span></li><li class="L6"><span class="pln">    </span><span class="kwd">my</span><span class="pln"> $self </span><span class="pun">=</span><span class="pln"> shift</span><span class="pun">;</span><span class="pln"> </span></li><li class="L7"><span class="pln">    return $self</span><span class="pun">-&gt;{</span><span class="pln">length</span><span class="pun">}</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> $self</span><span class="pun">-&gt;{</span><span class="pln">breadth</span><span class="pun">};</span><span class="pln"> </span></li><li class="L8"><span class="pun">}</span><span class="pln"> </span></li><li class="L9"><span class="pln"> </span></li><li class="L0"><span class="kwd">sub</span><span class="pln"> perimeter </span></li><li class="L1"><span class="pun">{</span><span class="pln"> </span></li><li class="L2"><span class="pln">    </span><span class="kwd">my</span><span class="pln"> $self </span><span class="pun">=</span><span class="pln"> shift</span><span class="pun">;</span><span class="pln"> </span></li><li class="L3"><span class="pln">    return $self</span><span class="pun">-&gt;{</span><span class="pln">length</span><span class="pun">}</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> $self</span><span class="pun">-&gt;{</span><span class="pln">breadth</span><span class="pun">}</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln"> </span></li><li class="L4"><span class="pun">}</span><span class="pln"> </span></li><li class="L5"><span class="lit">1</span><span class="pun">;</span></li><li class="L6"><span class="pln"> </span></li></ol></code>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" id="python">
+                        <hr>
+                        <h3 style="text-align: center">Output: Python Code </h3>
+                        server.py
+                        <hr>
+                        <div class="my_code" style="color:white">
+                            <code class="prettyprint language-python linenums prettyprinted" id="python_code"
+                                style=""><ol class="linenums"><li class="L0"><span class="kwd">class</span><span class="pln"> rect </span><span class="pun">:</span><span class="pln"> </span></li><li class="L1"><span class="pln">     </span></li><li class="L2"><span class="pln">    </span><span class="kwd">def</span><span class="pln"> __init__</span><span class="pun">(</span><span class="pln">self</span><span class="pun">,*</span><span class="pln">argv</span><span class="pun">)</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span></li><li class="L3"><span class="pln">        arg_list </span><span class="pun">=</span><span class="pln"> list</span><span class="pun">(</span><span class="pln">argv</span><span class="pun">)[::-</span><span class="lit">1</span><span class="pun">]</span><span class="pln"> </span></li><li class="L4"><span class="pln">        self</span><span class="pun">.</span><span class="pln">__dict__</span><span class="pun">.</span><span class="pln">update</span><span class="pun">({</span><span class="str">'length'</span><span class="pun">:</span><span class="pln">arg_list</span><span class="pun">.</span><span class="pln">pop</span><span class="pun">(),</span><span class="str">'breadth'</span><span class="pun">:</span><span class="pln">arg_list</span><span class="pun">.</span><span class="pln">pop</span><span class="pun">()})</span><span class="pln"> </span></li><li class="L5"><span class="pln">     </span></li><li class="L6"><span class="pln">    </span><span class="kwd">def</span><span class="pln"> area </span><span class="pun">(</span><span class="pln">self</span><span class="pun">,*</span><span class="pln">argv</span><span class="pun">)</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span></li><li class="L7"><span class="pln">        arg_list </span><span class="pun">=</span><span class="pln"> list</span><span class="pun">(</span><span class="pln">argv</span><span class="pun">)[::-</span><span class="lit">1</span><span class="pun">]</span><span class="pln"> </span></li><li class="L8"><span class="pln">        </span><span class="kwd">return</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">length </span><span class="pun">*</span><span class="pln"> self</span><span class="pun">.</span><span class="pln">breadth</span><span class="pun">)</span><span class="pln"> </span></li><li class="L9"><span class="pln">         </span></li><li class="L0"><span class="pln">     </span></li><li class="L1"><span class="pln">    </span><span class="kwd">def</span><span class="pln"> perimeter </span><span class="pun">(</span><span class="pln">self</span><span class="pun">,*</span><span class="pln">argv</span><span class="pun">)</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span></li><li class="L2"><span class="pln">        arg_list </span><span class="pun">=</span><span class="pln"> list</span><span class="pun">(</span><span class="pln">argv</span><span class="pun">)[::-</span><span class="lit">1</span><span class="pun">]</span><span class="pln"> </span></li><li class="L3"><span class="pln">        </span><span class="kwd">return</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">length </span><span class="pun">*</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> self</span><span class="pun">.</span><span class="pln">breadth </span><span class="pun">*</span><span class="pln"> </span><span class="lit">2</span><span class="pun">)</span><span class="pln"> </span></li><li class="L4"><span class="pln">         </span></li><li class="L5"><span class="pln"> </span></li></ol></code>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <h2>Client</h2>
+            <div class="container-fluid" id="" style="background-color: whitesmoke">
+                <div class="row">
+                    <div class="col-sm-12" id="perl">
+                        <hr>
+                        <h3 style="text-align: center">Input: Perl Code </h3>
+                        client.pl
+                        <hr>
+                        <div class="my_code" style="color:white">
+                            <code class="prettyprint language-python linenums prettyprinted" id="perl_code"
+                                style=""><ol class="linenums"><li class="L0"><span class="com"># !/usr/local/bin/perl -w -I E:\Rachana\extra\Refactoring_oo_perl\testing\input</span></li><li class="L1"><span class="pln">use lib </span><span class="str">'E:\\Rachana\\extra\\Refactoring_oo_perl\\testing\\input\\'</span><span class="pun">;</span></li><li class="L2"><span class="pln">use server</span><span class="pun">::</span><span class="pln">rect</span><span class="pun">;</span></li><li class="L3"><span class="pln">&nbsp;</span></li><li class="L4"><span class="pln">$x</span><span class="pun">=</span><span class="lit">10</span><span class="pun">;</span></li><li class="L5"><span class="pln">$y</span><span class="pun">=</span><span class="lit">15</span><span class="pun">;</span></li><li class="L6"><span class="kwd">print</span><span class="pln"> </span><span class="str">"Constructing a rectangle of length $x and breadth $y \n"</span><span class="pun">;</span></li><li class="L7"><span class="pln">&nbsp;</span></li><li class="L8"><span class="com">#Constructing a rectangle of length $x and breadth $y </span></li><li class="L9"><span class="pln">$d </span><span class="pun">=</span><span class="pln"> rect</span><span class="pun">-&gt;</span><span class="pln">new</span><span class="pun">(</span><span class="pln">$x</span><span class="pun">,</span><span class="pln">$y</span><span class="pun">);</span></li><li class="L0"><span class="pln">$d</span><span class="pun">-&gt;</span><span class="pln">area</span><span class="pun">();</span></li><li class="L1"><span class="pln">&nbsp;</span></li><li class="L2"><span class="com">#area and perimeter </span></li><li class="L3"><span class="pln">$area </span><span class="pun">=</span><span class="pln"> $d</span><span class="pun">-&gt;</span><span class="pln">area</span><span class="pun">();</span></li><li class="L4"><span class="pln">$perimeter </span><span class="pun">=</span><span class="pln"> $d</span><span class="pun">-&gt;</span><span class="pln">perimeter</span><span class="pun">();</span></li><li class="L5"><span class="pln">&nbsp;</span></li><li class="L6"><span class="kwd">print</span><span class="pln"> </span><span class="str">"A rectangle of length $x and breadth $y \nHas area = $area \t perimeter = $perimeter \n"</span><span class="pun">;</span></li><li class="L7"><span class="pln">&nbsp;</span></li><li class="L8"><span class="pln">&nbsp;</span></li><li class="L9"><span class="pln"> </span></li></ol></code>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-12" id="python">
+                        <hr>
+                        <h3 style="text-align: center">Output: Python Code </h3>
+                        client.py
+                        <hr>
+                        <div class="my_code" style="color:white">
+                            <code class="prettyprint language-python linenums prettyprinted" id="python_code"
+                                style=""><ol class="linenums"><li class="L0"><span class="pln">str_ </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">lambda</span><span class="pln"> x</span><span class="pun">:</span><span class="pln"> </span><span class="str">''</span><span class="pln"> </span><span class="kwd">if</span><span class="pln"> x </span><span class="pun">==</span><span class="pln"> </span><span class="kwd">None</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> str</span><span class="pun">(</span><span class="pln">x</span><span class="pun">)</span><span class="pln"> </span></li><li class="L1"><span class="pln">area </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">None</span><span class="pln"> </span></li><li class="L2"><span class="pln">perimeter </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">None</span><span class="pln"> </span></li><li class="L3"><span class="pln">x </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">None</span><span class="pln"> </span></li><li class="L4"><span class="pln">y </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">None</span><span class="pln"> </span></li><li class="L5"><span class="com"># !/usr/local/bin/perl -w -I E:\Rachana\extra\Refactoring_oo_perl\testing\input </span></li><li class="L6"><span class="kwd">import</span><span class="pln"> sys </span></li><li class="L7"><span class="pln">sys</span><span class="pun">.</span><span class="pln">path</span><span class="pun">.</span><span class="pln">insert</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="str">'E:\\Rachana\\extra\\Refactoring_oo_perl\\testing\\input\\'</span><span class="pun">)</span><span class="pln"> </span></li><li class="L8"><span class="kwd">import</span><span class="pln"> server</span><span class="pun">.</span><span class="pln">rect </span><span class="kwd">as</span><span class="pln"> rect </span></li><li class="L9"><span class="pln">x </span><span class="pun">=</span><span class="pln"> </span><span class="lit">10</span><span class="pln"> </span></li><li class="L0"><span class="pln">y </span><span class="pun">=</span><span class="pln"> </span><span class="lit">15</span><span class="pln"> </span></li><li class="L1"><span class="kwd">print</span><span class="pun">(</span><span class="pln"> </span><span class="str">"Constructing a rectangle of length "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">x</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" and breadth "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">y</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" \n"</span><span class="pun">,</span><span class="pln"> end</span><span class="pun">=</span><span class="str">''</span><span class="pun">,</span><span class="pln"> sep</span><span class="pun">=</span><span class="str">''</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span></li><li class="L2"><span class="com">#Constructing a rectangle of length $x and breadth $y </span></li><li class="L3"><span class="pln">d </span><span class="pun">=</span><span class="pln"> rect</span><span class="pun">.</span><span class="pln">rect</span><span class="pun">(</span><span class="pln">x</span><span class="pun">,</span><span class="pln">y</span><span class="pun">)</span><span class="pln"> </span></li><li class="L4"><span class="pln">d</span><span class="pun">.</span><span class="pln">area</span><span class="pun">()</span><span class="pln"> </span></li><li class="L5"><span class="com">#area and perimeter </span></li><li class="L6"><span class="pln">area </span><span class="pun">=</span><span class="pln"> d</span><span class="pun">.</span><span class="pln">area</span><span class="pun">()</span><span class="pln"> </span></li><li class="L7"><span class="pln">perimeter </span><span class="pun">=</span><span class="pln"> d</span><span class="pun">.</span><span class="pln">perimeter</span><span class="pun">()</span><span class="pln"> </span></li><li class="L8"><span class="kwd">print</span><span class="pun">(</span><span class="pln"> </span><span class="str">"A rectangle of length "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">x</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" and breadth "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">y</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" \nHas area = "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">area</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" \t perimeter = "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">perimeter</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" \n"</span><span class="pun">,</span><span class="pln"> end</span><span class="pun">=</span><span class="str">''</span><span class="pun">,</span><span class="pln"> sep</span><span class="pun">=</span><span class="str">''</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span></li><li class="L9"><span class="pln"> </span></li></ol></code>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-6" id="perl">
+                        <h4 style="text-align: center">Perl Code Output</h4>
+                        <div class="my_code_o">
+                            <code class=" " id="perl_output" style="color: white !important;">Constructing a rectangle of length 10 and breadth 15 <br>A rectangle of length 10 and breadth 15 <br>Has area = 150 	 perimeter = 50 <br>
+                        </code>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" id="python">
+                        <h4 style="text-align: center">Python Code Output</h4>
+                        <div class="my_code_o">
+                            <code class=" " id="python_output" style="color: white !important;">Constructing a rectangle of length 10 and breadth 15 <br>A rectangle of length 10 and breadth 15 <br>Has area = 150 	 perimeter = 50 <br>
+                        </code>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <h3>
+                Example 3
+            </h3>
+            Example demonstrating the global, local and my concept in perl.
+            <br>
+            <div class="container-fluid" id="" style="background-color: whitesmoke">
+                <div class="row">
+                    <div class="col-sm-12" id="perl">
+                        <hr>
+                        <h3 style="text-align: center">Input: Perl Code </h3>
+                        scope.pl
+                        <hr>
+                        <div class="my_code" style="color:white">
+                            <code class="prettyprint language-perl linenums prettyprinted" id="perl_code"
+                                style=""><ol class="linenums"><li class="L0"><span class="pln">&nbsp;</span></li><li class="L1"><span class="kwd">sub</span><span class="pln"> foo</span></li><li class="L2"><span class="pun">{</span></li><li class="L3"><span class="pln"> </span><span class="kwd">print</span><span class="pln"> </span><span class="str">"deleted"</span><span class="pun">;</span></li><li class="L4"><span class="pun">}</span></li><li class="L5"><span class="kwd">sub</span><span class="pln"> foo</span></li><li class="L6"><span class="pun">{</span></li><li class="L7"><span class="pln"> $z</span><span class="pun">=</span><span class="pln">shift</span><span class="pun">;</span></li><li class="L8"><span class="pln"> </span><span class="kwd">my</span><span class="pln"> $y </span><span class="pun">=</span><span class="pln"> </span><span class="lit">20</span><span class="pun">;</span></li><li class="L9"><span class="pln"> </span><span class="kwd">local</span><span class="pln"> $z </span><span class="pun">=</span><span class="pln"> </span><span class="lit">30</span><span class="pun">;</span></li><li class="L0"><span class="pln"> </span><span class="kwd">print</span><span class="pln"> </span><span class="str">"foo before g : \n x : $x y : $y z : $z \n"</span><span class="pun">;</span><span class="pln"> </span><span class="com"># x: 10 y: 20 z: 30 </span></li><li class="L1"><span class="pln"> g</span><span class="pun">();</span></li><li class="L2"><span class="pln"> </span><span class="kwd">print</span><span class="pln"> </span><span class="str">"foo after g : \n x : $x y : $y z : $z \n"</span><span class="pun">;</span><span class="pln"> </span><span class="com">#x: 2 y: 20 z: 3</span></li><li class="L3"><span class="pln"> </span><span class="kwd">print</span><span class="pln"> </span><span class="str">"foo global : \n y : "</span><span class="pun">,</span><span class="pln"> $main</span><span class="pun">::</span><span class="pln">y</span><span class="pun">,</span><span class="str">"\n"</span><span class="pun">;</span><span class="pln"> </span><span class="com"># y : 2</span></li><li class="L4"><span class="pln">&nbsp;</span></li><li class="L5"><span class="pun">}</span></li><li class="L6"><span class="kwd">sub</span><span class="pln"> g</span></li><li class="L7"><span class="pun">{</span></li><li class="L8"><span class="pln"> </span><span class="kwd">print</span><span class="pln"> </span><span class="str">"g : \n x : $x y : $y z : $z \n"</span><span class="pun">;</span><span class="pln"> </span><span class="com"># x: 10 y : z: 30</span></li><li class="L9"><span class="pln"> $x </span><span class="pun">=</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln"> $y </span><span class="pun">=</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln"> $z </span><span class="pun">=</span><span class="pln"> </span><span class="lit">3</span><span class="pun">;</span></li><li class="L0"><span class="pun">}</span></li><li class="L1"><span class="pln">$x </span><span class="pun">=</span><span class="pln"> </span><span class="lit">10</span><span class="pun">;</span></li><li class="L2"><span class="kwd">print</span><span class="pln"> </span><span class="str">"main before foo : \n x : $x y : $y z : $z \n"</span><span class="pun">;</span><span class="pln"> </span><span class="com"># x: 10 y: z: </span></li><li class="L3"><span class="pln">foo</span><span class="pun">(</span><span class="pln">$x</span><span class="pun">);</span></li><li class="L4"><span class="kwd">print</span><span class="pln"> </span><span class="str">"main after foo : \n x : $x y : $y z : $z \n"</span><span class="pun">;</span><span class="pln"> </span><span class="com"># x : 2 y:2 z :10</span></li><li class="L5"><span class="pln"> </span></li></ol></code>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-12" id="python">
+                        <hr>
+                        <h3 style="text-align: center">Output: Python Code </h3>
+                        scope.py
+                        <hr>
+                        <div class="my_code" style="color:white">
+                            <code class="prettyprint language-python linenums prettyprinted" id="python_code"
+                                style=""><ol class="linenums"><li class="L0"><span class="pln">str_ </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">lambda</span><span class="pln"> x</span><span class="pun">:</span><span class="pln"> </span><span class="str">''</span><span class="pln"> </span><span class="kwd">if</span><span class="pln"> x </span><span class="pun">==</span><span class="pln"> </span><span class="kwd">None</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> str</span><span class="pun">(</span><span class="pln">x</span><span class="pun">)</span><span class="pln"> </span></li><li class="L1"><span class="pln">x </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">None</span><span class="pln"> </span></li><li class="L2"><span class="pln">y </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">None</span><span class="pln"> </span></li><li class="L3"><span class="pln">z </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">None</span><span class="pln"> </span></li><li class="L4"><span class="pln"> </span></li><li class="L5"><span class="pln"> </span></li><li class="L6"><span class="kwd">def</span><span class="pln"> foo </span><span class="pun">(</span><span class="pln">x </span><span class="pun">,</span><span class="pln"> y </span><span class="pun">,</span><span class="pln"> z </span><span class="pun">,</span><span class="pln"> </span><span class="pun">*</span><span class="pln">argv</span><span class="pun">)</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span></li><li class="L7"><span class="pln">    arg_list </span><span class="pun">=</span><span class="pln"> list</span><span class="pun">(</span><span class="pln">argv</span><span class="pun">)[::-</span><span class="lit">1</span><span class="pun">]</span><span class="pln"> </span></li><li class="L8"><span class="pln">    z </span><span class="pun">=</span><span class="pln"> arg_list</span><span class="pun">.</span><span class="pln">pop</span><span class="pun">()</span><span class="pln"> </span></li><li class="L9"><span class="pln">    my_y </span><span class="pun">=</span><span class="pln"> </span><span class="lit">20</span><span class="pln"> </span></li><li class="L0"><span class="pln">    local_z </span><span class="pun">=</span><span class="pln"> </span><span class="lit">30</span><span class="pln"> </span></li><li class="L1"><span class="pln">    </span><span class="kwd">print</span><span class="pun">(</span><span class="pln"> </span><span class="str">"foo before g : \n x : "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">x</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" y : "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">my_y</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" z : "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">local_z</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" \n"</span><span class="pun">,</span><span class="pln">end</span><span class="pun">=</span><span class="str">''</span><span class="pun">,</span><span class="pln">sep</span><span class="pun">=</span><span class="str">''</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span></li><li class="L2"><span class="pln">    </span><span class="com"># x: 10 y: 20 z: 30 </span></li><li class="L3"><span class="pln">    </span><span class="pun">(</span><span class="pln">x </span><span class="pun">,</span><span class="pln"> y </span><span class="pun">,</span><span class="pln"> local_z</span><span class="pun">)=</span><span class="pln">g</span><span class="pun">(</span><span class="pln"> x </span><span class="pun">,</span><span class="pln"> y </span><span class="pun">,</span><span class="pln"> local_z </span><span class="pun">)</span><span class="pln"> </span></li><li class="L4"><span class="pln">    </span><span class="kwd">print</span><span class="pun">(</span><span class="pln"> </span><span class="str">"foo after g : \n x : "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">x</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" y : "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">my_y</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" z : "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">local_z</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" \n"</span><span class="pun">,</span><span class="pln">end</span><span class="pun">=</span><span class="str">''</span><span class="pun">,</span><span class="pln">sep</span><span class="pun">=</span><span class="str">''</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span></li><li class="L5"><span class="pln">    </span><span class="com">#x: 2 y: 20 z: 3 </span></li><li class="L6"><span class="pln">    </span><span class="kwd">print</span><span class="pun">(</span><span class="pln"> </span><span class="str">"foo global : \n y : "</span><span class="pun">,</span><span class="pln">y</span><span class="pun">,</span><span class="str">"\n"</span><span class="pun">,</span><span class="pln">end</span><span class="pun">=</span><span class="str">''</span><span class="pun">,</span><span class="pln">sep</span><span class="pun">=</span><span class="str">''</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span></li><li class="L7"><span class="pln">    </span><span class="com"># y : 2 </span></li><li class="L8"><span class="pln">    </span><span class="kwd">return</span><span class="pun">(</span><span class="pln"> x</span><span class="pun">,</span><span class="pln">y</span><span class="pun">,</span><span class="pln">z </span><span class="pun">)</span><span class="pln"> </span></li><li class="L9"><span class="pln"> </span></li><li class="L0"><span class="kwd">def</span><span class="pln"> g </span><span class="pun">(</span><span class="pln">x </span><span class="pun">,</span><span class="pln"> y </span><span class="pun">,</span><span class="pln"> z </span><span class="pun">,</span><span class="pln"> </span><span class="pun">*</span><span class="pln">argv</span><span class="pun">)</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span></li><li class="L1"><span class="pln">    arg_list </span><span class="pun">=</span><span class="pln"> list</span><span class="pun">(</span><span class="pln">argv</span><span class="pun">)[::-</span><span class="lit">1</span><span class="pun">]</span><span class="pln"> </span></li><li class="L2"><span class="pln">    </span><span class="kwd">print</span><span class="pun">(</span><span class="pln"> </span><span class="str">"g : \n x : "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">x</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" y : "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">y</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" z : "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">z</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" \n"</span><span class="pun">,</span><span class="pln">end</span><span class="pun">=</span><span class="str">''</span><span class="pun">,</span><span class="pln">sep</span><span class="pun">=</span><span class="str">''</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span></li><li class="L3"><span class="pln">    </span><span class="com"># x: 10 y : z: 30 </span></li><li class="L4"><span class="pln">    x </span><span class="pun">=</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span></li><li class="L5"><span class="pln">    y </span><span class="pun">=</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span></li><li class="L6"><span class="pln">    z </span><span class="pun">=</span><span class="pln"> </span><span class="lit">3</span><span class="pln"> </span></li><li class="L7"><span class="pln">    </span><span class="kwd">return</span><span class="pun">(</span><span class="pln"> x</span><span class="pun">,</span><span class="pln">y</span><span class="pun">,</span><span class="pln">z </span><span class="pun">)</span><span class="pln"> </span></li><li class="L8"><span class="pln">x </span><span class="pun">=</span><span class="pln"> </span><span class="lit">10</span><span class="pln"> </span></li><li class="L9"><span class="kwd">print</span><span class="pun">(</span><span class="pln"> </span><span class="str">"main before foo : \n x : "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">x</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" y : "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">y</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" z : "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">z</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" \n"</span><span class="pun">,</span><span class="pln">end</span><span class="pun">=</span><span class="str">''</span><span class="pun">,</span><span class="pln">sep</span><span class="pun">=</span><span class="str">''</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span></li><li class="L0"><span class="com"># x: 10 y: z: </span></li><li class="L1"><span class="pun">(</span><span class="pln">x </span><span class="pun">,</span><span class="pln"> y </span><span class="pun">,</span><span class="pln"> z</span><span class="pun">)=</span><span class="pln">foo</span><span class="pun">(</span><span class="pln"> x </span><span class="pun">,</span><span class="pln"> y </span><span class="pun">,</span><span class="pln"> z </span><span class="pun">,</span><span class="pln"> x </span><span class="pun">)</span><span class="pln"> </span></li><li class="L2"><span class="kwd">print</span><span class="pun">(</span><span class="pln"> </span><span class="str">"main after foo : \n x : "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">x</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" y : "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">y</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" z : "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> str_</span><span class="pun">(</span><span class="pln">z</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">" \n"</span><span class="pun">,</span><span class="pln">end</span><span class="pun">=</span><span class="str">''</span><span class="pun">,</span><span class="pln">sep</span><span class="pun">=</span><span class="str">''</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span></li><li class="L3"><span class="com"># x : 2 y:2 z :10 </span></li><li class="L4"><span class="pln"> </span></li></ol></code>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-6" id="perl">
+                        <h4 style="text-align: center">Perl Code Output</h4>
+                        <div class="my_code_o">
+                            <code id="perl_output"
+                                style="color: white !important;"><span class="pln">main before foo </span><span class="pun">:</span><span class="pln"> </span><br><span class="pln"> x </span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pln"> y </span><span class="pun">:</span><span class="pln"> z </span><span class="pun">:</span><span class="pln"> </span><br><span class="pln">foo before g </span><span class="pun">:</span><span class="pln"> </span><br><span class="pln"> x </span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pln"> y </span><span class="pun">:</span><span class="pln"> </span><span class="lit">20</span><span class="pln"> z </span><span class="pun">:</span><span class="pln"> </span><span class="lit">30</span><span class="pln"> </span><br><span class="pln">g </span><span class="pun">:</span><span class="pln"> </span><br><span class="pln"> x </span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pln"> y </span><span class="pun">:</span><span class="pln"> z </span><span class="pun">:</span><span class="pln"> </span><span class="lit">30</span><span class="pln"> </span><br><span class="pln">foo after g </span><span class="pun">:</span><span class="pln"> </span><br><span class="pln"> x </span><span class="pun">:</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> y </span><span class="pun">:</span><span class="pln"> </span><span class="lit">20</span><span class="pln"> z </span><span class="pun">:</span><span class="pln"> </span><span class="lit">3</span><span class="pln"> </span><br><span class="pln">foo </span><span class="kwd">global</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><br><span class="pln"> y </span><span class="pun">:</span><span class="pln"> </span><span class="lit">2</span><br><span class="pln">main after foo </span><span class="pun">:</span><span class="pln"> </span><br><span class="pln"> x </span><span class="pun">:</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> y </span><span class="pun">:</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> z </span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pln"> </span><br><span class="pln"> </span></code>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" id="python">
+                        <h4 style="text-align: center">Python Code Output</h4>
+                        <div class="my_code_o">
+                            <code id="python_output"
+                                style="color: white !important;"><span class="pln">main before foo </span><span class="pun">:</span><span class="pln"> </span><br><span class="pln"> x </span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pln"> y </span><span class="pun">:</span><span class="pln"> z </span><span class="pun">:</span><span class="pln"> </span><br><span class="pln">foo before g </span><span class="pun">:</span><span class="pln"> </span><br><span class="pln"> x </span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pln"> y </span><span class="pun">:</span><span class="pln"> </span><span class="lit">20</span><span class="pln"> z </span><span class="pun">:</span><span class="pln"> </span><span class="lit">30</span><span class="pln"> </span><br><span class="pln">g </span><span class="pun">:</span><span class="pln"> </span><br><span class="pln"> x </span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pln"> y </span><span class="pun">:</span><span class="pln"> z </span><span class="pun">:</span><span class="pln"> </span><span class="lit">30</span><span class="pln"> </span><br><span class="pln">foo after g </span><span class="pun">:</span><span class="pln"> </span><br><span class="pln"> x </span><span class="pun">:</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> y </span><span class="pun">:</span><span class="pln"> </span><span class="lit">20</span><span class="pln"> z </span><span class="pun">:</span><span class="pln"> </span><span class="lit">3</span><span class="pln"> </span><br><span class="pln">foo </span><span class="kwd">global</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><br><span class="pln"> y </span><span class="pun">:</span><span class="pln"> </span><span class="lit">2</span><br><span class="pln">main after foo </span><span class="pun">:</span><span class="pln"> </span><br><span class="pln"> x </span><span class="pun">:</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> y </span><span class="pun">:</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> z </span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pln"> </span><br><span class="pln"> </span></code>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h3>
+                System Architecture
+            </h3>
+            <img src="Systemarchitecture.png" height="300px">
+
+            The translation consists of 3 main stages :
+            <h4>
+                1. Lexing
+            </h4>
+            Perl regex rules are used to tokenize the input code.
+
+            <h4>
+                2. Parsing
+            </h4>
+            The sequence of tokens passed is matched to Perl grammar in the parsing stage. The parser built works in
+            two stages.
+            <ol>
+                <li>
+                    In the first stage of parsing a type of look-up table is constructed. This look up table is uniquely
+                    designed to
+                    accomodate the intricacies of variable scope in Perl which was mentioned earlier.
+
+                </li>
+                <li>
+                    In the second stage the parser utilizes the look up table generated previously along with production
+                    rules and mapping functions to map the tokens of each Perl statement to its equivalent Python
+                    statement.
+                    The generated python statement is subsequently added to an intermediate representation which is not
+                    unlike an Abstract Syntax Tree (AST).
+                </li>
+            </ol>
+            <h4>
+                3. Tree Traversal and Indentation
+            </h4>
+            In the final step the generated Abstract Syntax tree is traversed using depth first traversal.
+            Proper indentation is crucial for python; indentations are set to match the depth of the node containing the
+            statement in the Abstract Syntax Tree.
+            <h4>
+                Applications
+            </h4>
+            The Perl Developer community is shrinking rapidly. The peculiarities of Object Oriented Perl
+            deters new programmers from picking it up while scripting languages like Python are gaining
+            popularity. Despite this, many companies still have a large amount of legacy Perl code in their code base
+            whose maintenance is becoming tedious.
+            One of the possible applications of this tool could be to translate existing perl code to more maintainable
+            python.
+
+            <h1>
+                User Interface
+            </h1>
+            <img src="Capture.PNG">
+
+        </body>
+
+
+        <footer class="site-footer">
+            Team members:
+            <br>
+            <span class="site-footer-credits"> <a href="https://github.com/RachanaJayaram"> Rachana Jayaram </a> -
+                rachana.jayaram@gmail.com</a></span>
+            <br>
+            <span class="site-footer-credits"> <a href="https://github.com/skandavc18"> Skanda VC </a> -
+                skandavc18@gmail.com </a></span>
+        </footer>
+    </section>
+
+
 </body>
+
+</html>
