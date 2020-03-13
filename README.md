@@ -1,3 +1,3 @@
 This project is an exploration of program translation using compiler design techniques.
 <br>
-<a href = "https://rachanajayaram.github.io/Translating-OOPerl-to-Python/"> Translating OOPerl to Python </a>
+Report of the project is found <a href = "https://rachanajayaram.github.io/Translating-OOPerl-to-Python/">here</a>.
