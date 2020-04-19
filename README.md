@@ -1,4 +1,4 @@
 # Translating Object Oriented Perl to Python
-This project is an exploration of program translation using compiler design techniques.
+This project is an exploration of program translation using compiler design techniques. This repository is for the web report of the project.
 <br>
-Report of the project is found <a href = "https://rachanajayaram.github.io/Translating-OOPerl-to-Python/">here</a>.
+Website for the project is found <a href = "https://rachanajayaram.github.io/Translating-OOPerl-to-Python/">here</a>.
